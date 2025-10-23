@@ -12,8 +12,8 @@ export default function Sidebar() {
     { href: "/", icon: RiHome6Line, label: "Dashboard" },
     { href: "/profile", icon: LuUser, label: "Profile" },
     { href: "/search", icon: LuSearch, label: "Grant Search" },
-    { href: "/grants", icon: LuBookOpen, label: "Recommendations" },
-    { href: "/proposal", icon: LuFolderOpen, label: "Proposals" },
+    { href: "/grants/123", icon: LuBookOpen, label: "Recommendations" },
+    { href: "/proposal/123", icon: LuFolderOpen, label: "Proposals" },
   ];
 
   const [expanded, setExpanded] = useState(false);

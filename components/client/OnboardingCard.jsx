@@ -8,8 +8,6 @@ const ORCID_REGEX = /^\d{4}-\d{4}-\d{4}-\d{3}[0-9X]$/;
 export default function OnboardingCard() {
   const router = useRouter();
   const [step, setStep] = useState(1);
-
-  // Refs instead of useState
   const [orcid, setOrcid] = useState("");
   const formRef = useRef();
 
@@ -28,16 +26,24 @@ export default function OnboardingCard() {
       alert("Please enter a valid ORCID");
       return;
     }
-
     localStorage.setItem("user", JSON.stringify({ orcid }));
     setStep(2);
   }
 
-  function handleComplete(e) {
+  async function handleComplete(e) {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(formRef.current));
     const prev = JSON.parse(localStorage.getItem("user") || "{}");
-    localStorage.setItem("user", JSON.stringify({ ...prev, ...data }));
+    const full = { ...prev, ...data };
+
+    await fetch("/api/onboard", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(full),
+    });
+
+    localStorage.setItem("user", JSON.stringify(full));
+
     router.push("/");
   }
 
