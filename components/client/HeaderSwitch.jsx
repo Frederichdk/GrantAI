@@ -1,29 +1,33 @@
 "use client";
 import { usePathname } from "next/navigation";
 
-function DashboardHeader() {
+function DashboardHeader({ user }) {
   return (
     <div>
-      <h1 className="text-3xl">Hello, Frederich de Koker</h1>
+      <h1 className="text-3xl">Hello, {user.fullName || "Researcher"}</h1>
       <h2 className="text-text-pri/50">How can I help?</h2>
     </div>
   );
 }
 
-function ProfileHeader() {
+function ProfileHeader({ user }) {
   return (
     <div className="flex items-center gap-3">
       <div className="size-20 rounded-full bg-neutral-700" />
       <div>
-        <h1 className="text-3xl">Frederich de Koker</h1>
-        <h2 className="text-text-pri/50">fwdekoker@jahnelgroup.com</h2>
+        <h1 className="text-3xl">{user.fullName || "Researcher"}</h1>
+        <h2 className="text-text-pri/50">{user.email || "—"}</h2>
       </div>
     </div>
   );
 }
 
-export default function HeaderSwitch() {
+export default function HeaderSwitch({ user }) {
   const pathname = usePathname();
   const isProfile = pathname === "/profile" || pathname.startsWith("/profile/");
-  return isProfile ? <ProfileHeader /> : <DashboardHeader />;
+  return isProfile ? (
+    <ProfileHeader user={user} />
+  ) : (
+    <DashboardHeader user={user} />
+  );
 }

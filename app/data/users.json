@@ -1,6 +1,24 @@
 [
   {
     "orcid": "0000-0000-0000-0000",
+    "fullName": "Frederich de Koker",
+    "email": "Fred@test.com",
+    "location": "Albany, US",
+    "university": "SIena University",
+    "primaryField": "AI Ethics ",
+    "secondaryField": "",
+    "degrees": [
+      "BCIS in Computer Science",
+      "PHD in Rugby"
+    ],
+    "researchGoals": [
+      "Find the line between AI and Rugby"
+    ],
+    "createdAt": "2025-10-24T14:08:43.642Z",
+    "updatedAt": "2025-10-24T14:08:43.642Z"
+  },
+  {
+    "orcid": "5649-8464-6498-4664",
     "fullName": "",
     "email": "",
     "location": "",
@@ -9,7 +27,32 @@
     "secondaryField": "",
     "degrees": [],
     "researchGoals": [],
-    "createdAt": "2025-10-23T20:04:18.668Z",
-    "updatedAt": "2025-10-23T20:04:18.668Z"
+    "createdAt": "2025-10-24T14:41:17.142Z",
+    "updatedAt": "2025-10-24T14:41:17.142Z"
+  },
+  {
+    "fullName": "g",
+    "email": "g",
+    "location": "",
+    "university": "",
+    "primaryField": "",
+    "secondaryField": "",
+    "degrees": [],
+    "researchGoals": [],
+    "updatedAt": "2025-10-24T19:41:16.690Z",
+    "createdAt": "2025-10-24T19:41:16.690Z"
+  },
+  {
+    "orcid": "1111-1111-1111-1111",
+    "fullName": "Fred",
+    "email": "",
+    "location": "",
+    "university": "",
+    "primaryField": "",
+    "secondaryField": "",
+    "degrees": [],
+    "researchGoals": [],
+    "updatedAt": "2025-10-24T20:02:25.082Z",
+    "createdAt": "2025-10-24T19:48:11.902Z"
   }
 ]

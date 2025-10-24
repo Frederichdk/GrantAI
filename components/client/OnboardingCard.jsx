@@ -1,6 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
+import { useFormStatus } from "react-dom";
+import { completeOnboardingAction } from "@/app/actions/userActions";
 import { useRouter } from "next/navigation";
 
 const ORCID_REGEX = /^\d{4}-\d{4}-\d{4}-\d{3}[0-9X]$/;
@@ -9,7 +11,6 @@ export default function OnboardingCard() {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [orcid, setOrcid] = useState("");
-  const formRef = useRef();
 
   function handleOrcidChange(e) {
     let value = e.target.value;
@@ -26,25 +27,7 @@ export default function OnboardingCard() {
       alert("Please enter a valid ORCID");
       return;
     }
-    localStorage.setItem("user", JSON.stringify({ orcid }));
     setStep(2);
-  }
-
-  async function handleComplete(e) {
-    e.preventDefault();
-    const data = Object.fromEntries(new FormData(formRef.current));
-    const prev = JSON.parse(localStorage.getItem("user") || "{}");
-    const full = { ...prev, ...data };
-
-    await fetch("/api/onboard", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(full),
-    });
-
-    localStorage.setItem("user", JSON.stringify(full));
-
-    router.push("/");
   }
 
   function handleSkip() {
@@ -105,10 +88,10 @@ export default function OnboardingCard() {
             </p>
 
             <form
-              ref={formRef}
-              onSubmit={handleComplete}
+              action={completeOnboardingAction}
               className="grid grid-cols-1 md:grid-cols-2 gap-4"
             >
+              <input type="hidden" name="orcid" value={orcid} />
               <Field name="name" label="Full Name" />
               <Field name="email" label="Email" />
               <Field name="location" label="Location" />
@@ -136,12 +119,7 @@ export default function OnboardingCard() {
                 >
                   Skip
                 </button>
-                <button
-                  type="submit"
-                  className="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white rounded-md py-2"
-                >
-                  Complete
-                </button>
+                <SubmitButton />
               </div>
             </form>
           </>
@@ -161,5 +139,18 @@ function Field({ name, label, className = "", placeholder = "" }) {
         className="w-full rounded-md border border-neutral-700 bg-neutral-900 px-3 py-2 placeholder-neutral-400"
       />
     </div>
+  );
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      type="submit"
+      disabled={pending}
+      className="flex-1 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-60 text-white rounded-md py-2"
+    >
+      {pending ? "Saving..." : "Complete"}
+    </button>
   );
 }

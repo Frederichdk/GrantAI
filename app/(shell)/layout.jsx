@@ -1,9 +1,19 @@
 import Link from "next/link";
 import { GoPerson } from "react-icons/go";
-import Logout from "@/components/client/TempLogout";
 import Sidebar from "@/components/client/Sidebar";
+import Logout from "@/components/client/TempLogout";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { getUserByOrcid } from "@/lib/dal";
 
-export default function ShellLayout({ children }) {
+export default async function ShellLayout({ children }) {
+  const cookieStore = await cookies();
+  const orcid = cookieStore.get("orcid")?.value;
+  if (!orcid) redirect("/signup");
+
+  const user = await getUserByOrcid(orcid);
+  if (!user) redirect("/signup");
+
   return (
     <div className="h-screen w-screen flex flex-row">
       <Sidebar />

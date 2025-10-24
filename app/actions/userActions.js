@@ -1,50 +1,26 @@
 "use server";
 
-import { promises as fs } from "fs";
-import path from "path";
+import { upsertUser } from "@/lib/dal";
+import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 
-const DATA_PATH = path.join(process.cwd(), "app/data/users.json");
+export async function completeOnboardingAction(formData) {
+  const data = Object.fromEntries(formData);
+  const ORCID_REGEX = /^\d{4}-\d{4}-\d{4}-\d{3}[0-9X]$/;
 
-async function readData() {
-  try {
-    const txt = await fs.readFile(DATA_PATH, "utf-8");
-    return JSON.parse(txt);
-  } catch {
-    return [];
+  if (!ORCID_REGEX.test(data.orcid || "")) {
+    throw new Error("Invalid ORCID format");
   }
+
+  const user = await upsertUser(data);
+
+  const jar = await cookies();
+  jar.set("orcid", user.orcid);
+  redirect("/");
 }
-async function writeData(users) {
-  await fs.writeFile(DATA_PATH, JSON.stringify(users, null, 2));
-}
 
-export async function completeOnboarding(profile) {
-  const users = await readData();
-  const now = new Date().toISOString();
-
-  const user = {
-    orcid: profile.orcid,
-    fullName: profile.name || "",
-    email: profile.email || "",
-    location: profile.location || "",
-    university: profile.university || "",
-    primaryField: profile.primaryField || "",
-    secondaryField: profile.secondaryField || "",
-    degrees: (profile.degrees || "")
-      .split(",")
-      .map((s) => s.trim())
-      .filter(Boolean),
-    researchGoals: (profile.goalsCsv || "")
-      .split(",")
-      .map((s) => s.trim())
-      .filter(Boolean),
-    createdAt: now,
-    updatedAt: now,
-  };
-
-  const i = users.findIndex((u) => u.orcid === user.orcid);
-  if (i === -1) users.push(user);
-  else users[i] = user;
-
-  await writeData(users);
-  return user;
+export async function logoutAction() {
+  const jar = await cookies();
+  jar.delete("orcid");
+  redirect("/signup");
 }

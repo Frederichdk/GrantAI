@@ -1,18 +1,15 @@
 "use client";
 
-import Link from "next/link";
 import { FiLogOut } from "react-icons/fi";
+import { logoutAction } from "@/app/actions/userActions";
 
 export default function Logout() {
-  function handleLogout() {
-    localStorage.removeItem("user");
-  }
-
   return (
-    <Link href="/signup" onClick={handleLogout}>
+    <form action={logoutAction}>
       <button
+        type="submit"
         className="p-2 rounded-md  
-                    text-neutral-300 
+                   text-neutral-300 
                    hover:text-white 
                    transition-all duration-150 
                    active:scale-[0.97] shadow-sm hover:shadow-md
@@ -22,6 +19,6 @@ export default function Logout() {
       >
         <FiLogOut size={20} />
       </button>
-    </Link>
+    </form>
   );
 }
