@@ -1,16 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useActionState } from "react";
 import { useFormStatus } from "react-dom";
-import { completeOnboardingAction } from "@/app/actions/userActions";
+import {
+  completeOnboardingAction,
+  checkOrcidAction,
+} from "@/app/actions/userActions";
 import { useRouter } from "next/navigation";
 
 const ORCID_REGEX = /^\d{4}-\d{4}-\d{4}-\d{3}[0-9X]$/;
 
 export default function OnboardingCard() {
   const router = useRouter();
-  const [step, setStep] = useState(1);
   const [orcid, setOrcid] = useState("");
+  const [result, formAction] = useActionState(checkOrcidAction, null);
+  const effectiveStep = result?.needsInfo ? 2 : 1;
+  const orcidValue = result?.orcid ?? orcid;
 
   function handleOrcidChange(e) {
     let value = e.target.value;
@@ -21,15 +26,6 @@ export default function OnboardingCard() {
     setOrcid(value);
   }
 
-  function handleNext(e) {
-    e.preventDefault();
-    if (!ORCID_REGEX.test(orcid)) {
-      alert("Please enter a valid ORCID");
-      return;
-    }
-    setStep(2);
-  }
-
   function handleSkip() {
     router.push("/");
   }
@@ -37,7 +33,7 @@ export default function OnboardingCard() {
   return (
     <div className="min-h-screen bg-neutral-900 text-white flex items-center justify-center">
       <div className="bg-neutral-800 border border-neutral-700 rounded-xl p-6 w-full max-w-2xl shadow-lg">
-        {step === 1 ? (
+        {effectiveStep === 1 ? (
           <>
             <h2 className="text-lg font-semibold mb-1 text-center">
               Update Your User Profile
@@ -46,14 +42,15 @@ export default function OnboardingCard() {
               Automatically sync your profile research data.
             </p>
 
-            <form onSubmit={handleNext} className="space-y-4">
+            <form action={formAction} className="space-y-4">
               <div>
                 <label htmlFor="orcid" className="block text-sm mb-1">
                   Add ORCID ID
                 </label>
                 <input
                   id="orcid"
-                  value={orcid}
+                  name="orcid"
+                  value={orcidValue}
                   onChange={handleOrcidChange}
                   inputMode="numeric"
                   placeholder="0000-0000-0000-0000"
@@ -91,7 +88,7 @@ export default function OnboardingCard() {
               action={completeOnboardingAction}
               className="grid grid-cols-1 md:grid-cols-2 gap-4"
             >
-              <input type="hidden" name="orcid" value={orcid} />
+              <input type="hidden" name="orcid" value={orcidValue} />
               <Field name="name" label="Full Name" />
               <Field name="email" label="Email" />
               <Field name="location" label="Location" />
