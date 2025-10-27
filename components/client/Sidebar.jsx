@@ -50,8 +50,8 @@ export default function Sidebar() {
               className={`group flex items-center rounded-lg transition focus:outline-none focus:ring-2 focus:ring-neutral-600
                 ${
                   active
-                    ? "bg-neutral-800 text-white"
-                    : "text-neutral-300 hover:text-white hover:bg-neutral-800/70"
+                    ? "bg-neutral-800 text-text-pri"
+                    : "text-text-sec hover:text-white hover:bg-neutral-800/70"
                 } ${
                 expanded ? "px-3 gap-3 py-3" : "px-0 gap-0 py-3 justify-center"
               }`}

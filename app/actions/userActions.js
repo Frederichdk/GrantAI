@@ -25,7 +25,6 @@ export async function logoutAction() {
 }
 
 export async function checkOrcidAction(prevState, formData) {
-  // normalize ORCID
   const orcid = String(formData.get("orcid") || "").replace(/\s+/g, "");
 
   if (!ORCID_REGEX.test(orcid)) {
