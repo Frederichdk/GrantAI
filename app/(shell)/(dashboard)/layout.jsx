@@ -12,8 +12,8 @@ export default async function DashboardLayout({ children }) {
   if (!user) redirect("/signup");
 
   return (
-    <div className="h-full flex flex-col shrink-0 overflow-hidden ">
-      <header className="h-1/9 pl-16 flex items-start ">
+    <div className="h-full flex flex-col shrink-0 overflow-hidden">
+      <header className="h-1/9 pl-16 flex items-start">
         <HeaderSwitch user={user} />
       </header>
       <main className="flex-1">
