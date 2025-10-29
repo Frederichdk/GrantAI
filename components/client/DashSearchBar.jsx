@@ -19,7 +19,7 @@ export default function DashSearchBar() {
 
   return (
     <div className="flex justify-center w-full text-3xl font-bold mb-6">
-      <div className="flex items-center h-16 w-full gap-4 justify-center">
+      <div className="flex items-center h-14 w-full gap-4 justify-center ">
         <IconButton>
           <LuPaperclip size={18} />
         </IconButton>
@@ -27,7 +27,7 @@ export default function DashSearchBar() {
         <form
           id="dash-search-form"
           onSubmit={handleSubmit}
-          className="flex items-center w-3/5 h-16 rounded-full bg-search px-4 gap-2"
+          className="flex items-center w-3/5 h-14 rounded-full bg-search px-4 gap-2"
         >
           <input
             value={query}

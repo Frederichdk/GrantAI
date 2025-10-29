@@ -1,11 +1,11 @@
 import { readFile, writeFile } from "fs/promises";
 import path from "path";
 
-const DATA_PATH = path.join(process.cwd(), "app/data/users.json");
+const USER_PATH = path.join(process.cwd(), "app/data/users.json");
 
 async function readUsers() {
   try {
-    const data = await readFile(DATA_PATH, "utf-8");
+    const data = await readFile(USER_PATH, "utf-8");
     return JSON.parse(data || "[]");
   } catch {
     return [];
@@ -13,7 +13,7 @@ async function readUsers() {
 }
 
 async function writeUsers(users) {
-  await writeFile(DATA_PATH, JSON.stringify(users, null, 2));
+  await writeFile(USER_PATH, JSON.stringify(users, null, 2));
 }
 
 export async function upsertUser(profile) {
@@ -54,4 +54,14 @@ export async function upsertUser(profile) {
 export async function getUserByOrcid(orcid) {
   const users = await readUsers();
   return users.find((u) => u.orcid === orcid) || null;
+}
+
+export async function getTopGrants(limit = 10) {
+  const file = path.join(process.cwd(), "app/data/grants.json");
+  const raw = await readFile(file, "utf8");
+  const all = JSON.parse(raw);
+
+  return [...all]
+    .sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
+    .slice(0, limit);
 }
