@@ -2,6 +2,7 @@ import { readFile, writeFile } from "fs/promises";
 import path from "path";
 
 const USER_PATH = path.join(process.cwd(), "app/data/users.json");
+const GRANT_PATH = path.join(process.cwd(), "app/data/grants.json");
 
 async function readUsers() {
   try {
@@ -57,11 +58,17 @@ export async function getUserByOrcid(orcid) {
 }
 
 export async function getTopGrants(limit = 10) {
-  const file = path.join(process.cwd(), "app/data/grants.json");
-  const raw = await readFile(file, "utf8");
+  const raw = await readFile(GRANT_PATH, "utf-8");
   const all = JSON.parse(raw);
 
   return [...all]
     .sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
     .slice(0, limit);
+}
+
+export async function getGrantByID(grantID) {
+  const raw = await readFile(GRANT_PATH, "utf-8");
+  const data = JSON.parse(raw);
+  const found = data.find((grants) => grants.id === grantID);
+  return found;
 }
