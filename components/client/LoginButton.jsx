@@ -11,7 +11,7 @@ export default function LoginButton() {
       name: "Mock User",
     };
     localStorage.setItem("user", JSON.stringify(mockUser));
-    router.push("/signup/onboarding"); // or "/" if you want to land on dashboard
+    router.push("/signup/onboarding");
   }
 
   return (
