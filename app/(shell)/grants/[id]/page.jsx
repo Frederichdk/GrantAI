@@ -15,7 +15,7 @@ export default async function GrantDetailsPage({ params }) {
           <GrantBackButton />
           <h2 className="text-xl text-text-pri/80">{grant.title}</h2>
         </div>
-        <ApplicationButton id={id} from={"/"} />
+        <ApplicationButton id={id} from={`/grants/${id}`} />
       </div>
 
       <div className="w-full flex-1 px-10 py-4 text-sm bg-neutral-800/70 grid grid-cols-2 items-center border-b-2 border-neutral-800">
