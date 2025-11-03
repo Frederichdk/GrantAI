@@ -1,8 +1,48 @@
-export default function SearchPage() {
+import GrantBackButton from "@/components/client/GrantBackButton";
+import { getGrants } from "@/lib/dal";
+import GrantRecomendations from "@/components/client/GrantRecomendations";
+import FiltersTrigger from "@/components/client/FiltersTrigger";
+
+export default async function SearchPage({ searchParams }) {
+  const filters = {
+    amountMin: searchParams?.amountMin || "",
+    amountMax: searchParams?.amountMax || "",
+    category: searchParams?.category,
+    funding: searchParams?.funding,
+    status: searchParams?.status || "",
+    eligibilityMin: searchParams?.eligibilityMin || "",
+    eligibilityMax: searchParams?.eligibilityMax || "",
+    sort: searchParams?.sort || "relevance",
+  };
+
+  const grants = await getGrants(filters);
+
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Search Page</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-    </div>
+    <>
+      <div className="w-full h-16 px-6 flex flex-row justify-between items-center bg-neutral-800/70 border-b-3 border-neutral-800/70">
+        <div className="flex flex-row gap-8 items-center">
+          <GrantBackButton />
+          <h2 className="text-xl text-text-pri/80">Grant Opportunities</h2>
+        </div>
+      </div>
+
+      <div className="w-full flex-3 flex flex-col bg-neutral-800/70">
+        <div className="w-full h-24 px-10 flex items-center border-b-3 border-neutral-800/70">
+          <FiltersTrigger />
+        </div>
+
+        <div className="h-12 flex items-center px-10 border-b-3 border-neutral-800/70">
+          <p className="text-sm text-text-sec">
+            Showing {grants.length} grants
+          </p>
+        </div>
+
+        <div className="flex-1 p-6">
+          <div className="w-full max-h-[55vh] overflow-y-auto custom-scroll">
+            <GrantRecomendations grants={grants} />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

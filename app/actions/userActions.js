@@ -50,3 +50,29 @@ export async function checkOrcidAction(prevState, formData) {
 
   return { needsInfo: true, orcid };
 }
+
+export async function applyFilters(formData) {
+  const p = new URLSearchParams();
+
+  const amountMin = formData.get("amountMin");
+  const amountMax = formData.get("amountMax");
+  if (amountMin) p.set("amountMin", amountMin);
+  if (amountMax) p.set("amountMax", amountMax);
+
+  for (const [k, v] of formData.entries()) {
+    if (k === "category" || k === "funding") p.append(k, v);
+  }
+
+  const status = formData.get("status");
+  if (status) p.set("status", status);
+
+  const eligibilityMin = formData.get("eligibilityMin");
+  const eligibilityMax = formData.get("eligibilityMax");
+  if (eligibilityMin) p.set("eligibilityMin", eligibilityMin);
+  if (eligibilityMax) p.set("eligibilityMax", eligibilityMax);
+
+  const sort = formData.get("sort");
+  if (sort) p.set("sort", sort);
+
+  redirect(`/grants/search${p.toString() ? "?" + p.toString() : ""}`);
+}
