@@ -11,7 +11,6 @@ export default function Sidebar() {
   const nav = [
     { href: "/", icon: RiHome6Line, label: "Dashboard" },
     { href: "/profile", icon: LuUser, label: "Profile" },
-    { href: "/grants/search", icon: LuSearch, label: "Grant Search" },
   ];
 
   const [expanded, setExpanded] = useState(false);

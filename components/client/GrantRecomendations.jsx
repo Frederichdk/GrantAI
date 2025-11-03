@@ -1,5 +1,7 @@
+"use client";
 import Link from "next/link";
 import { HiChevronRight } from "react-icons/hi";
+import { usePathname, useSearchParams } from "next/navigation";
 
 function fmtMoney(n) {
   if (n == null) return "—";
@@ -33,6 +35,9 @@ function fmtScore(score) {
 }
 
 export default function GrantRecomendations({ grants }) {
+  const pathname = usePathname();
+  const sp = useSearchParams();
+  const currentUrl = sp.toString() ? `${pathname}?${sp.toString()}` : pathname;
   return (
     <ul className="flex flex-col gap-3">
       {grants.map((g) => (
@@ -40,7 +45,7 @@ export default function GrantRecomendations({ grants }) {
           <Link
             href={{
               pathname: `/grants/${encodeURIComponent(g.id)}`,
-              query: { from: "/" },
+              query: { from: currentUrl },
             }}
             className="group block rounded-lg border border-neutral-800 bg-neutral-800/70 px-5 py-4
                        hover:border-neutral-700 hover:bg-neutral-800/80 transition-colors outline-none

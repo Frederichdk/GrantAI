@@ -4,13 +4,21 @@ import { useState } from "react";
 import { LuPaperclip } from "react-icons/lu";
 import { LuSend } from "react-icons/lu";
 import { PiMicrophoneLight } from "react-icons/pi";
+import { useRouter } from "next/navigation";
 
 export default function DashSearchBar() {
+  const router = useRouter();
   const [query, setQuery] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("Search sent");
+
+    // temporary
+    if (query.trim()) {
+      router.push(`/grants/search?query=${encodeURIComponent(query)}`);
+    } else {
+      router.push("/grants/search");
+    }
   }
 
   function handleChange(e) {
@@ -19,7 +27,7 @@ export default function DashSearchBar() {
 
   return (
     <div className="flex justify-center w-full text-3xl font-bold mb-6">
-      <div className="flex items-center h-14 w-full gap-4 justify-center ">
+      <div className="flex items-center h-14 w-full gap-4 justify-center">
         <IconButton>
           <LuPaperclip size={18} />
         </IconButton>
@@ -38,19 +46,20 @@ export default function DashSearchBar() {
           <IconButton hover={false}>
             <PiMicrophoneLight size={20} />
           </IconButton>
-        </form>
 
-        <IconButton>
-          <LuSend size={18} />
-        </IconButton>
+          <IconButton type="submit">
+            <LuSend size={18} />
+          </IconButton>
+        </form>
       </div>
     </div>
   );
 }
 
-function IconButton({ children, hover = true, onClick }) {
+function IconButton({ children, hover = true, onClick, type = "button" }) {
   return (
     <button
+      type={type}
       onClick={onClick}
       className={[
         "text-text-sec w-10 h-10 flex justify-center items-center rounded-xl hover:text-text-pri",
