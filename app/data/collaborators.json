@@ -1,0 +1,147 @@
+[
+  {
+    "id": "c1",
+    "name": "Sarah Isbell",
+    "country": "US",
+    "bio": "Environmental policy researcher focused on wetlands and conservation initiatives.",
+    "tags": ["Conservation", "Wetlands", "Policy Analysis"]
+  },
+  {
+    "id": "c2",
+    "name": "Sarah Jensen",
+    "country": "US",
+    "bio": "Specializes in climate change adaptation and resource management.",
+    "tags": ["Climate Change", "Resource Management"]
+  },
+  {
+    "id": "c3",
+    "name": "Sarah Rothstein",
+    "country": "US",
+    "bio": "Community outreach expert with experience in local sustainability programs.",
+    "tags": ["Sustainability", "Outreach", "Community Engagement"]
+  },
+  {
+    "id": "c4",
+    "name": "Sawssan Boufous",
+    "country": "US",
+    "bio": "Economist researching sustainability and consumer demand trends.",
+    "tags": [
+      "Consumer Demand",
+      "Sustainability",
+      "Non-Market Valuation",
+      "Applied Econometrics"
+    ]
+  },
+  {
+    "id": "c5",
+    "name": "Marcus Lee",
+    "country": "CA",
+    "bio": "Data scientist with a focus on environmental data visualization and public dashboards.",
+    "tags": ["Data Visualization", "Machine Learning", "Open Data"]
+  },
+  {
+    "id": "c6",
+    "name": "Alicia Patel",
+    "country": "IN",
+    "bio": "Researcher in water resource management and agricultural innovation.",
+    "tags": ["Water Management", "Agriculture", "Innovation"]
+  },
+  {
+    "id": "c7",
+    "name": "Jonas Becker",
+    "country": "DE",
+    "bio": "Focuses on renewable energy policy and transnational collaboration projects.",
+    "tags": ["Renewable Energy", "Policy", "Cross-Border Projects"]
+  },
+  {
+    "id": "c8",
+    "name": "Mei Chen",
+    "country": "CN",
+    "bio": "Urban planning researcher developing sustainable transport frameworks.",
+    "tags": ["Urban Planning", "Transportation", "Sustainability"]
+  },
+  {
+    "id": "c9",
+    "name": "Nora Al-Fayed",
+    "country": "AE",
+    "bio": "Investigates the role of AI in smart city and climate resilience applications.",
+    "tags": ["AI", "Smart Cities", "Resilience"]
+  },
+  {
+    "id": "c10",
+    "name": "Daniel Brooks",
+    "country": "US",
+    "bio": "Professor of economics studying agricultural markets and carbon pricing models.",
+    "tags": ["Economics", "Agriculture", "Carbon Pricing"]
+  },
+  {
+    "id": "c11",
+    "name": "Hiro Tanaka",
+    "country": "JP",
+    "bio": "Researcher at Kyoto University focused on oceanic microplastic contamination.",
+    "tags": ["Marine Biology", "Microplastics", "Environmental Chemistry"]
+  },
+  {
+    "id": "c12",
+    "name": "Fatima El-Masri",
+    "country": "EG",
+    "bio": "Environmental sociologist exploring public attitudes toward green policy.",
+    "tags": ["Sociology", "Public Policy", "Sustainability"]
+  },
+  {
+    "id": "c13",
+    "name": "Carlos Ramirez",
+    "country": "MX",
+    "bio": "Engineer focused on clean energy infrastructure and smart grid optimization.",
+    "tags": ["Engineering", "Clean Energy", "Smart Grid"]
+  },
+  {
+    "id": "c14",
+    "name": "Lina Johansson",
+    "country": "SE",
+    "bio": "Researches circular economy practices and waste reduction in manufacturing.",
+    "tags": ["Circular Economy", "Manufacturing", "Waste Reduction"]
+  },
+  {
+    "id": "c15",
+    "name": "James Walker",
+    "country": "US",
+    "bio": "Statistician developing predictive models for biodiversity loss.",
+    "tags": ["Statistics", "Biodiversity", "Predictive Modeling"]
+  },
+  {
+    "id": "c16",
+    "name": "Tariq Khan",
+    "country": "PK",
+    "bio": "Studies renewable energy supply chains and sustainable logistics.",
+    "tags": ["Renewable Energy", "Supply Chain", "Sustainability"]
+  },
+  {
+    "id": "c17",
+    "name": "Emily Roberts",
+    "country": "UK",
+    "bio": "Marine ecologist researching coral reef recovery strategies.",
+    "tags": ["Marine Ecology", "Coral Reefs", "Climate Change"]
+  },
+  {
+    "id": "c18",
+    "name": "Victor Adewale",
+    "country": "NG",
+    "bio": "Expert in sustainable urban agriculture and food security.",
+    "tags": ["Urban Agriculture", "Food Security", "Sustainability"]
+  },
+  {
+    "id": "c19",
+    "name": "Isabella Rossi",
+    "country": "IT",
+    "bio": "Focuses on energy-efficient architecture and building materials.",
+    "tags": ["Architecture", "Energy Efficiency", "Design"]
+  },
+  {
+    "id": "c20",
+    "name": "Louis Dupont",
+    "country": "FR",
+    "bio": "Researches international collaboration in renewable energy funding.",
+    "tags": ["International Policy", "Renewable Energy", "Funding"]
+  }
+]

@@ -1,13 +1,16 @@
 import GrantBackButton from "@/components/client/GrantBackButton";
 import ExportButton from "@/components/client/ExportButton";
-import { getGrantByID } from "@/lib/dal";
+import { getGrantByID, getSuggestedCollaborators } from "@/lib/dal";
 import { notFound } from "next/navigation";
 import ProposalForm from "@/components/client/ProposalForm";
+import CollaboratorsList from "@/components/client/CollaboratorsList";
 
 export default async function ProposalPage({ params }) {
   const { id } = await params;
   const grant = await getGrantByID(id);
   if (!grant) notFound();
+
+  const collaborators = await getSuggestedCollaborators(id);
   return (
     <>
       <div className="w-full h-16 px-6 flex flex-row justify-between items-center bg-neutral-800/70 border-b-3 border-neutral-800">
@@ -26,6 +29,7 @@ export default async function ProposalPage({ params }) {
         </div>
         <div className="w-full flex-1 ">
           <h3 className="text-xl text-text-pri/80">Collaborators</h3>
+          <CollaboratorsList collaborators={collaborators} />
         </div>
       </div>
     </>

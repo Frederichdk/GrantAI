@@ -159,3 +159,9 @@ export async function getGrants(filters = {}, limit = 40) {
 
   return out;
 }
+
+export async function getSuggestedCollaborators() {
+  const filePath = path.join(process.cwd(), "app/data/collaborators.json");
+  const data = await readFile(filePath, "utf-8");
+  return JSON.parse(data);
+}
