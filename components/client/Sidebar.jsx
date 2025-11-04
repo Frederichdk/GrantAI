@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { LuUser, LuSearch, LuBookOpen, LuFolderOpen } from "react-icons/lu";
+import { LuUser } from "react-icons/lu";
 import { RiHome6Line } from "react-icons/ri";
 import { BsLayoutSidebar } from "react-icons/bs";
 
@@ -21,17 +21,25 @@ export default function Sidebar() {
       className={`${width} h-full border-r border-neutral-800 bg-neutral-900 transition-all`}
       aria-label="Primary"
     >
-      <div className="h-20 px-3  flex items-center justify-between">
-        <span className={expanded ? "font-semibold" : "sr-only"}>
+      <div
+        className={`h-20 flex items-center justify-between transition-[padding] duration-300 ease-in-out  ${
+          expanded ? "px-4" : "pr-2.5"
+        }`}
+      >
+        <span
+          className={`block w-fit truncate transition-opacity duration-200  ${
+            expanded ? "opacity-100" : "opacity-0"
+          }`}
+        >
           Navigation
         </span>
+
         <button
           onClick={() => setExpanded((x) => !x)}
-          className="p-2 rounded-md hover:bg-neutral-800/70"
-          aria-label={expanded ? "Collapse sidebar" : "Expand sidebar"}
+          className="p-3  rounded-md  hover:bg-neutral-800/70"
           title={expanded ? "Collapse" : "Expand"}
         >
-          <BsLayoutSidebar size={18} />
+          <BsLayoutSidebar size={20} />
         </button>
       </div>
 
@@ -44,28 +52,19 @@ export default function Sidebar() {
               href={href}
               title={!expanded ? label : undefined}
               aria-current={active ? "page" : undefined}
-              className={`group flex items-center rounded-lg transition focus:outline-none focus:ring-2 focus:ring-neutral-600
-                ${
-                  active
-                    ? "bg-neutral-800 text-text-pri"
-                    : "text-text-sec hover:text-white hover:bg-neutral-800/70"
-                } ${
-                expanded ? "px-3 gap-3 py-3" : "px-0 gap-0 py-3 justify-center"
-              }`}
+              className={`group grid items-center rounded-lg transition ${
+                active
+                  ? "bg-neutral-800 text-text-pri"
+                  : "text-text-sec hover:text-white hover:bg-neutral-800/70"
+              } ${expanded ? "grid-cols-[24px_1fr]" : "grid-cols-[24px_0fr]"}
+                   px-3 py-3 gap-3
+                  transition-[grid-template-columns]`}
             >
               <span className="shrink-0 w-5 h-5 grid place-items-center">
-                {Icon ? (
-                  <Icon size={20} />
-                ) : (
-                  <span className="inline-block w-5 h-5" />
-                )}
+                <Icon size={20} />
               </span>
 
-              {expanded && (
-                <span className="whitespace-nowrap transition-[opacity,transform] opacity-100 translate-x-0">
-                  {label}
-                </span>
-              )}
+              <span className="overflow-hidden whitespace-nowrap">{label}</span>
             </Link>
           );
         })}
