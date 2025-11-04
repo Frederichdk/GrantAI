@@ -3,6 +3,7 @@
 import { upsertUser, getUserByOrcid } from "@/lib/dal";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
+import { revalidatePath } from "next/cache";
 
 const ORCID_REGEX = /^\d{4}-\d{4}-\d{4}-\d{3}[0-9X]$/;
 
@@ -74,4 +75,27 @@ export async function applyFilters(formData) {
   if (sort) p.set("sort", sort);
 
   redirect(`/grants/search${p.toString() ? "?" + p.toString() : ""}`);
+}
+
+export async function updateProfileAction(formData) {
+  const orcid = formData.get("orcid");
+  if (!orcid) throw new Error("Missing ORCID");
+  const tab = formData.get("tab") || "basic";
+
+  console.log("made it into update profile");
+
+  await upsertUser({
+    orcid,
+    name: formData.get("name") || undefined,
+    email: formData.get("email") || undefined,
+    location: formData.get("location") || undefined,
+    university: formData.get("university") || undefined,
+    primaryField: formData.get("primaryField") || undefined,
+    secondaryField: formData.get("secondaryField") || undefined,
+    degrees: formData.get("degrees") || undefined,
+    goalsCsv: formData.get("goalsCsv") || undefined,
+  });
+
+  revalidatePath("/profile");
+  redirect(`/profile?tab=${tab}`);
 }

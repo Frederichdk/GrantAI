@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { getUserByOrcid } from "@/lib/dal";
 import ProfileTabPicker from "@/components/client/ProfileTabPicker";
+import ProfileBasicDetails from "@/components/client/ProfileBasicDetails";
 
 const TABS = {
   basic: "Basic Details",
@@ -27,73 +28,17 @@ export default async function ProfileManagmentPage({ searchParams }) {
 
   return (
     <div className="flex flex-col w-full h-full">
-      <div className="p-6 border-t-2 border-b-2 border-neutral-800">
+      <div className="p-6 border-t-2  border-neutral-800">
         <ProfileTabPicker activeKey={activeKey} />
-        <h2 className="mt-6 text-lg text-text-pri font-semibold">
-          {activeLabel}
-        </h2>
       </div>
 
-      <section className="p-6">
-        {activeKey === "basic" && <BasicDetails user={user} />}
+      <section>
+        {activeKey === "basic" && (
+          <ProfileBasicDetails user={user} activeLabel={activeLabel} />
+        )}
         {activeKey === "interests" && <Interests user={user} />}
         {activeKey === "articles" && <PublishedArticles user={user} />}
       </section>
-    </div>
-  );
-}
-
-function BasicDetails({ user }) {
-  return (
-    <div className="flex flex-col gap-4 px-2">
-      <div className="rounded-lg border border-neutral-800 p-6 bg-neutral-800/70">
-        <h3 className="text-text-pri font-semibold">Personal Information</h3>
-        <div className="grid grid-cols-2 gap-y-4 text-sm pt-6">
-          <div className="">
-            <p className="text-text-pri">Full Name</p>
-            <p className="text-text-sec">{user?.name || "—"}</p>
-          </div>
-
-          <div>
-            <p className="text-text-pri">Email Address</p>
-            <p className="text-text-sec">{user?.email || "—"}</p>
-          </div>
-
-          <div>
-            <p className="text-text-pri">Location</p>
-            <p className="text-text-sec">
-              {user?.grant_search_preferences.location || "—"}
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className="rounded-lg border border-neutral-800 p-6 bg-neutral-800/70">
-        <h3 className="text-text-pri font-semibold">Academic Information</h3>
-        <div className="grid grid-cols-2 gap-y-4 text-sm pt-6">
-          <div className="">
-            <p className="text-text-pri">Institution/University</p>
-            <p className="text-text-sec">{user?.institution || "—"}</p>
-          </div>
-
-          <div>
-            <p className="text-text-pri">ORCID iD</p>
-            <p className="text-text-sec">{user?.orcid || "—"}</p>
-          </div>
-
-          <div>
-            <p className="text-text-pri">Degrees</p>
-            {user?.grant_search_preferences.degrees?.length ? (
-              <div className="text-text-sec">
-                {user.grant_search_preferences.degrees.map((degree, i) => (
-                  <p key={i}>{degree}</p>
-                ))}
-              </div>
-            ) : (
-              <p className="text-text-sec">—</p>
-            )}
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

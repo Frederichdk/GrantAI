@@ -2,26 +2,22 @@
   {
     "id": "0000-0000-0000-0000",
     "orcid": "0000-0000-0000-0000",
-    "email": "Fred@test.com",
+    "email": "",
     "name": "Frederich de Koker",
     "institution": "Siena",
-    "research_interests": [
-      "AI Ethics"
-    ],
+    "research_interests": [],
     "grant_search_preferences": {
       "location": "Clifton Park, NY",
-      "primary_research_field": "AI Ethics",
+      "primary_research_field": "",
       "secondary_research_field": "",
       "associated_university": "Siena",
       "degrees": [
         "BCIS in CS",
         "PHD in Rugby"
       ],
-      "research_goals": [
-        "Finding the line between AI and Rugby"
-      ]
+      "research_goals": []
     },
-    "updated": "2025-11-04T15:13:08.818Z",
+    "updated": "2025-11-04T20:16:43.971Z",
     "created": "2025-11-04T15:09:58.701Z"
   }
 ]
