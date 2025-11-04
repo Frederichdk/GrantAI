@@ -4,15 +4,16 @@ import GrantRecomendations from "@/components/client/GrantRecomendations";
 import FiltersTrigger from "@/components/client/FiltersTrigger";
 
 export default async function SearchPage({ searchParams }) {
+  const params = await searchParams;
   const filters = {
-    amountMin: searchParams?.amountMin || "",
-    amountMax: searchParams?.amountMax || "",
-    category: searchParams?.category,
-    funding: searchParams?.funding,
-    status: searchParams?.status || "",
-    eligibilityMin: searchParams?.eligibilityMin || "",
-    eligibilityMax: searchParams?.eligibilityMax || "",
-    sort: searchParams?.sort || "relevance",
+    amountMin: params?.amountMin || "",
+    amountMax: params?.amountMax || "",
+    category: params?.category,
+    funding: params?.funding,
+    status: params?.status || "",
+    eligibilityMin: params?.eligibilityMin || "",
+    eligibilityMax: params?.eligibilityMax || "",
+    sort: params?.sort || "relevance",
   };
 
   const grants = await getGrants(filters);

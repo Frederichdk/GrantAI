@@ -33,16 +33,15 @@ export async function checkOrcidAction(prevState, formData) {
 
   const user = await getUserByOrcid(orcid);
 
-  const required = [
-    "fullName",
-    "email",
-    "location",
-    "university",
-    "primaryField",
-  ];
-  const isComplete = !!user && required.every((k) => !!user[k]);
+  const hasProfile =
+    !!user &&
+    (user.name ||
+      user.email ||
+      user.institution ||
+      user.grant_search_preferences?.primary_research_field ||
+      user.grant_search_preferences?.location);
 
-  if (isComplete) {
+  if (hasProfile) {
     const jar = await cookies();
     jar.set("orcid", orcid, { path: "/" });
     redirect("/");

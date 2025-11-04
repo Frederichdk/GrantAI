@@ -51,7 +51,7 @@ function BasicDetails({ user }) {
         <div className="grid grid-cols-2 gap-y-4 text-sm pt-6">
           <div className="">
             <p className="text-text-pri">Full Name</p>
-            <p className="text-text-sec">{user?.fullName || "—"}</p>
+            <p className="text-text-sec">{user?.name || "—"}</p>
           </div>
 
           <div>
@@ -61,7 +61,9 @@ function BasicDetails({ user }) {
 
           <div>
             <p className="text-text-pri">Location</p>
-            <p className="text-text-sec">{user?.location || "—"}</p>
+            <p className="text-text-sec">
+              {user?.grant_search_preferences.location || "—"}
+            </p>
           </div>
         </div>
       </div>
@@ -70,7 +72,7 @@ function BasicDetails({ user }) {
         <div className="grid grid-cols-2 gap-y-4 text-sm pt-6">
           <div className="">
             <p className="text-text-pri">Institution/University</p>
-            <p className="text-text-sec">{user?.university || "—"}</p>
+            <p className="text-text-sec">{user?.institution || "—"}</p>
           </div>
 
           <div>
@@ -80,9 +82,9 @@ function BasicDetails({ user }) {
 
           <div>
             <p className="text-text-pri">Degrees</p>
-            {user?.degrees?.length ? (
+            {user?.grant_search_preferences.degrees?.length ? (
               <div className="text-text-sec">
-                {user.degrees.map((degree, i) => (
+                {user.grant_search_preferences.degrees.map((degree, i) => (
                   <p key={i}>{degree}</p>
                 ))}
               </div>
@@ -105,11 +107,15 @@ function Interests({ user }) {
           <div className="grid grid-cols-1 gap-y-4 text-sm pt-6">
             <div>
               <p className="text-text-pri">Primary Research Field</p>
-              <p className="text-text-sec">{user?.primaryField || "—"}</p>
+              <p className="text-text-sec">
+                {user?.grant_search_preferences.primary_research_field || "—"}
+              </p>
             </div>
             <div>
               <p className="text-text-pri">Secondary Research Field</p>
-              <p className="text-text-sec">{user?.secondaryField || "—"}</p>
+              <p className="text-text-sec">
+                {user?.grant_search_preferences.secondary_research_field || "—"}
+              </p>
             </div>
           </div>
         </div>

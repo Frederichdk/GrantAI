@@ -30,18 +30,24 @@ export async function upsertUser(profile) {
   const existing = users.find((u) => u.orcid === profile.orcid);
 
   const user = {
-    ...existing,
+    id: profile.orcid,
     orcid: profile.orcid,
-    fullName: profile.name || "",
     email: profile.email || "",
-    location: profile.location || "",
-    university: profile.university || "",
-    primaryField: profile.primaryField || "",
-    secondaryField: profile.secondaryField || "",
-    degrees: clean(profile.degrees),
-    researchGoals: clean(profile.goalsCsv),
-    updatedAt: now,
-    createdAt: existing?.createdAt || now,
+    name: profile.name || "",
+    institution: profile.university || "",
+    research_interests: [profile.primaryField, profile.secondaryField].filter(
+      Boolean
+    ),
+    grant_search_preferences: {
+      location: profile.location || "",
+      primary_research_field: profile.primaryField || "",
+      secondary_research_field: profile.secondaryField || "",
+      associated_university: profile.university || "",
+      degrees: clean(profile.degrees),
+      research_goals: clean(profile.goalsCsv),
+    },
+    updated: now,
+    created: existing?.created || now,
   };
 
   const index = users.findIndex((u) => u.orcid === user.orcid);
