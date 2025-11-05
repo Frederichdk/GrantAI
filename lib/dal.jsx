@@ -20,37 +20,82 @@ async function writeUsers(users) {
 export async function upsertUser(profile) {
   const users = await readUsers();
   const now = new Date().toISOString();
+  const orcid = String(profile.orcid || "").trim();
+  if (!orcid) throw new Error("Missing ORCID");
 
-  const clean = (val = "") =>
-    val
+  const existing = users.find((u) => u.orcid === orcid);
+
+  const cleanCsv = (val) =>
+    String(val || "")
       .split(",")
       .map((s) => s.trim())
       .filter(Boolean);
 
-  const existing = users.find((u) => u.orcid === profile.orcid);
+  const keep = (oldVal, newVal) => {
+    if (newVal === undefined || newVal === null) return oldVal;
+    if (typeof newVal === "string") {
+      const trimmed = newVal.trim();
+      if (trimmed === "") return "";
+      return trimmed;
+    }
+    return newVal;
+  };
+
+  const oldGsp = existing?.grant_search_preferences || {};
 
   const user = {
-    id: profile.orcid,
-    orcid: profile.orcid,
-    email: profile.email || "",
-    name: profile.name || "",
-    institution: profile.university || "",
-    research_interests: [profile.primaryField, profile.secondaryField].filter(
-      Boolean
-    ),
+    id: orcid,
+    orcid,
+    email: keep(existing?.email, profile.email),
+    name: keep(existing?.name, profile.name),
+    institution: keep(existing?.institution, profile.university),
     grant_search_preferences: {
-      location: profile.location || "",
-      primary_research_field: profile.primaryField || "",
-      secondary_research_field: profile.secondaryField || "",
-      associated_university: profile.university || "",
-      degrees: clean(profile.degrees),
-      research_goals: clean(profile.goalsCsv),
+      location: keep(oldGsp.location, profile.location),
+      primary_research_field: keep(
+        oldGsp.primary_research_field,
+        profile.primaryField
+      ),
+      secondary_research_field: keep(
+        oldGsp.secondary_research_field,
+        profile.secondaryField
+      ),
+      associated_university: keep(
+        oldGsp.associated_university,
+        profile.university
+      ),
+      degrees:
+        profile.degrees !== undefined
+          ? cleanCsv(profile.degrees)
+          : oldGsp.degrees || [],
+      years_since_degree: keep(
+        oldGsp.years_since_degree,
+        profile.years_since_degree || profile.years
+      ),
+      collaboration_interest: keep(
+        oldGsp.collaboration_interest,
+        profile.collaboration_interest
+      ),
+      research_goals:
+        profile.goalsCsv !== undefined
+          ? cleanCsv(profile.goalsCsv)
+          : oldGsp.research_goals || [],
+      desired_funding: {
+        min:
+          profile.desired_funding_min !== undefined
+            ? Number(profile.desired_funding_min) || ""
+            : oldGsp.desired_funding?.min || "",
+        max:
+          profile.desired_funding_max !== undefined
+            ? Number(profile.desired_funding_max) || ""
+            : oldGsp.desired_funding?.max || "",
+      },
+      project_duration: keep(oldGsp.project_duration, profile.project_duration),
     },
     updated: now,
     created: existing?.created || now,
   };
 
-  const index = users.findIndex((u) => u.orcid === user.orcid);
+  const index = users.findIndex((u) => u.orcid === orcid);
   if (index >= 0) users[index] = user;
   else users.push(user);
 

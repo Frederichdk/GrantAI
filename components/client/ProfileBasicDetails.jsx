@@ -10,7 +10,7 @@ export default function ProfileBasicDetails({ user, activeLabel }) {
     <form action={updateProfileAction} className="flex flex-col gap-4">
       <input type="hidden" name="orcid" value={user.orcid} />
       <input type="hidden" name="tab" value="basic" />
-      <div className="flex w-full justify-between items-center px-6 pb-4 border-b-2 border-neutral-800/70">
+      <div className="flex w-full justify-between items-center px-6 pb-4 border-b-2 border-neutral-800/70  h-14">
         <h2 className="text-lg text-text-pri/90 font-semibold">
           {activeLabel}
         </h2>
@@ -83,6 +83,12 @@ export default function ProfileBasicDetails({ user, activeLabel }) {
               label="Degrees (comma-separated)"
               name="degrees"
               value={(gsp.degrees || []).join(", ")}
+              editing={editing}
+            />
+            <Field
+              label="Years Since Degree"
+              name="years"
+              value={gsp.years_since_degree}
               editing={editing}
             />
           </div>

@@ -83,18 +83,28 @@ export async function updateProfileAction(formData) {
   const tab = formData.get("tab") || "basic";
 
   console.log("made it into update profile");
+  const toNum = (v) => {
+    const s = (v ?? "").toString().trim();
+    return s === "" ? undefined : Number(s);
+  };
 
-  await upsertUser({
+  const payload = {
     orcid,
-    name: formData.get("name") || undefined,
-    email: formData.get("email") || undefined,
-    location: formData.get("location") || undefined,
-    university: formData.get("university") || undefined,
-    primaryField: formData.get("primaryField") || undefined,
-    secondaryField: formData.get("secondaryField") || undefined,
-    degrees: formData.get("degrees") || undefined,
-    goalsCsv: formData.get("goalsCsv") || undefined,
-  });
+    name: formData.get("name"),
+    email: formData.get("email"),
+    location: formData.get("location"),
+    university: formData.get("university"),
+    primaryField: formData.get("primaryField"),
+    secondaryField: formData.get("secondaryField"),
+    years_since_degree: formData.get("years"),
+    project_duration: formData.get("project_duration"),
+    desired_funding_min: toNum(formData.get("desired_funding_min")),
+    desired_funding_max: toNum(formData.get("desired_funding_max")),
+    collaboration_interest: formData.get("collaboration_interest"),
+  };
+  if (formData.has("degrees")) payload.degrees = formData.get("degrees");
+  if (formData.has("goalsCsv")) payload.goalsCsv = formData.get("goalsCsv");
+  await upsertUser(payload);
 
   revalidatePath("/profile");
   redirect(`/profile?tab=${tab}`);
