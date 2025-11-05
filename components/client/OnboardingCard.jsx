@@ -8,8 +8,6 @@ import {
 } from "@/app/actions/userActions";
 import { useRouter } from "next/navigation";
 
-const ORCID_REGEX = /^\d{4}-\d{4}-\d{4}-\d{3}[0-9X]$/;
-
 export default function OnboardingCard() {
   const router = useRouter();
   const [orcid, setOrcid] = useState("");
@@ -89,21 +87,56 @@ export default function OnboardingCard() {
               className="grid grid-cols-1 md:grid-cols-2 gap-4"
             >
               <input type="hidden" name="orcid" value={orcidValue} />
-              <Field name="name" label="Full Name" />
-              <Field name="email" label="Email" />
-              <Field name="location" label="Location" />
-              <Field name="university" label="Associated University" />
-              <Field name="primaryField" label="Primary Research Field" />
-              <Field name="secondaryField" label="Secondary Research Field" />
+              <Field
+                name="name"
+                label="Full Name"
+                defaultValue={result?.user?.name}
+              />
+              <Field
+                name="email"
+                label="Email"
+                defaultValue={result?.user?.email}
+              />
+              <Field
+                name="location"
+                label="Location"
+                defaultValue={result?.user?.grant_search_preferences.location}
+              />
+              <Field
+                name="university"
+                label="Associated University"
+                defaultValue={result?.user?.institution}
+              />
+              <Field
+                name="primaryField"
+                label="Primary Research Field"
+                defaultValue={
+                  result?.user?.grant_search_preferences.primary_research_field
+                }
+              />
+              <Field
+                name="secondaryField"
+                label="Secondary Research Field"
+                defaultValue={
+                  result?.user?.grant_search_preferences
+                    .secondary_research_field
+                }
+              />
               <Field
                 name="degrees"
                 label="Degrees"
+                defaultValue={(
+                  result?.user?.grant_search_preferences.degrees || []
+                ).join(", ")}
                 placeholder="e.g., PhD in CS, MS in AI"
                 className="md:col-span-2"
               />
               <Field
                 name="goalsCsv"
                 label="Research Goals (comma-separated)"
+                defaultValue={(
+                  result?.user?.grant_search_preferences.research_goals || []
+                ).join(", ")}
                 placeholder="e.g., Develop new ML models, Publish in top journals"
                 className="md:col-span-2"
               />
@@ -126,12 +159,19 @@ export default function OnboardingCard() {
   );
 }
 
-function Field({ name, label, className = "", placeholder = "" }) {
+function Field({
+  name,
+  label,
+  className = "",
+  placeholder = "",
+  defaultValue = "",
+}) {
   return (
     <div className={className}>
       <label className="block text-sm mb-1">{label}</label>
       <input
         name={name}
+        defaultValue={defaultValue}
         placeholder={placeholder}
         className="w-full rounded-md border border-neutral-700 bg-neutral-900 px-3 py-2 placeholder-neutral-400"
       />

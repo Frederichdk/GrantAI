@@ -36,11 +36,11 @@ export async function checkOrcidAction(prevState, formData) {
 
   const hasProfile =
     !!user &&
-    (user.name ||
-      user.email ||
-      user.institution ||
-      user.grant_search_preferences?.primary_research_field ||
-      user.grant_search_preferences?.location);
+    Boolean(user.name?.trim()) &&
+    Boolean(user.email?.trim()) &&
+    Boolean(user.institution?.trim()) &&
+    Boolean(user.grant_search_preferences?.primary_research_field?.trim()) &&
+    Boolean(user.grant_search_preferences?.location?.trim());
 
   if (hasProfile) {
     const jar = await cookies();
@@ -48,7 +48,7 @@ export async function checkOrcidAction(prevState, formData) {
     redirect("/");
   }
 
-  return { needsInfo: true, orcid };
+  return { needsInfo: true, orcid, user };
 }
 
 export async function applyFilters(formData) {

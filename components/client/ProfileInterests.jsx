@@ -139,7 +139,7 @@ function GoalsField({ name, value, editing }) {
           {items.map((goal, i) => (
             <span
               key={i}
-              className="px-3 py-1 text-xs rounded-full bg-neutral-700/70 text-neutral-200 border border-neutral-700 break-words"
+              className="px-3 py-1 text-xs rounded-full bg-neutral-700/70 text-neutral-200 border border-neutral-700 wrap-break-word"
             >
               {goal}
             </span>

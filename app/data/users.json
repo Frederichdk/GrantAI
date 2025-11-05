@@ -2,25 +2,25 @@
   {
     "id": "0000-0000-0000-0000",
     "orcid": "0000-0000-0000-0000",
-    "email": "test",
+    "email": "very@nice.com",
     "name": "Fred",
-    "institution": "test",
+    "institution": "Uni",
     "grant_search_preferences": {
-      "location": "teste",
-      "primary_research_field": "test",
-      "secondary_research_field": "",
-      "associated_university": "test",
+      "location": "NY",
+      "primary_research_field": "Frontend",
+      "secondary_research_field": "Kachow",
+      "associated_university": "Uni",
       "degrees": [],
       "years_since_degree": "",
-      "collaboration_interest": "false",
+      "collaboration_interest": "true",
       "research_goals": [],
       "desired_funding": {
         "min": "",
         "max": 6000000
       },
-      "project_duration": ""
+      "project_duration": "5"
     },
-    "updated": "2025-11-05T18:39:06.324Z",
+    "updated": "2025-11-05T20:28:22.906Z",
     "created": "2025-11-04T15:09:58.701Z"
   },
   {
