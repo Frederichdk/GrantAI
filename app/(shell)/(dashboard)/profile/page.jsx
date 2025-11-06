@@ -48,26 +48,3 @@ export default async function ProfileManagmentPage({ searchParams }) {
     </div>
   );
 }
-
-function PublishedArticles() {
-  return (
-    <div className="flex flex-col gap-4 px-2">
-      <div className="rounded-lg border border-neutral-800 p-6 bg-neutral-800/70">
-        <h3 className="text-text-pri font-semibold">Paper Titles</h3>
-        <div className="grid grid-cols-2 gap-y-4 text-sm pt-6">
-          <div>
-            <p className="text-text-sec">No paper titles found</p>
-          </div>
-        </div>
-      </div>
-      <div className="rounded-lg border border-neutral-800 p-6 bg-neutral-800/70">
-        <h3 className="text-text-pri font-semibold">Paper Abstracts</h3>
-        <div className="grid grid-cols-2 gap-y-4 text-sm pt-6">
-          <div>
-            <p className="text-text-sec">No paper abstracts found</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
