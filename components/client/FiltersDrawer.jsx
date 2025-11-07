@@ -163,7 +163,7 @@ export default function FiltersDrawer({ open, onClose }) {
               id="sort"
               name="sort"
               defaultValue={get("sort") || "relevance"}
-              className="w-full rounded-md bg-lgrey border border-search px-3 py-2 text-sm outline-none"
+              className="w-full rounded-md bg-lgrey border border-search px-3 py-2 text-sm outline-none text-text-pri/80"
             >
               <option value="relevance">Relevance</option>
               <option value="deadline">Application deadline</option>

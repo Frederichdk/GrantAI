@@ -1,23 +1,53 @@
 @import "tailwindcss";
 
+@theme {
+  --color-mainbg: var(--c-mainbg);
+  --color-inwhite: var(--c-inwhite);
+  --color-mgrey: var(--c-mgrey);
+  --color-lgrey: var(--c-lgrey);
+  --color-hover: var(--c-hover);
+  --color-search: var(--c-search);
+  --color-text-pri: var(--c-text-pri);
+  --color-text-sec: var(--c-text-sec);
+}
+
 :root {
+  --background: #fbfbfb;
+  --foreground: #171717;
+
+  --c-mainbg: #f9f9f9;
+  --c-inwhite: #1e1e1e;
+  --c-mgrey: #e0e0e0;
+  --c-lgrey: #d6d6d6;
+  --c-hover: #eaeaea;
+  --c-search: #d9d9d9;
+  --c-text-pri: #171717;
+  --c-text-sec: #838383;
+
+  --scrollbar-thumb: rgba(0,0,0,0.18);
+  --scrollbar-thumb-hover: rgba(0,0,0,0.28);
+  --scrollbar-track: transparent;
+  --scrollbar-pair: rgba(0,0,0,0.22) transparent;
+}
+
+html.dark {
   --background: #171717;
   --foreground: #fbfbfb;
-}
 
-@theme{
-  --color-mainbg: #171717;
-  --color-black-fore: #262626;
-  --color-block: #35353b;
-  --color-inwhite: #d4d4d4;
-  --color-mgrey: #313131;
-  --color-lgrey: #262626;
-  --color-hover: #222222;
-  --color-search: #404040;
-  --color-text-pri: #fbfbfb;
-  --color-text-sec: #9c9c9c;
-}
+  --c-mainbg: #171717;
+  --c-inwhite: #d4d4d4;
+  --c-mgrey: #313131;
+  --c-lgrey: #262626;
+  --c-hover: #222222;
+  --c-search: #404040;
+  --c-text-pri: #fbfbfb;
+  --c-text-sec: #9c9c9c;
 
+  --scrollbar-thumb: rgba(255,255,255,0.18);
+  --scrollbar-thumb-hover: rgba(255,255,255,0.28);
+  --scrollbar-track: transparent;
+  --scrollbar-pair: rgba(255,255,255,0.22) transparent;
+}
 
 body {
   background: var(--background);
@@ -26,28 +56,21 @@ body {
 }
 
 .custom-scroll::-webkit-scrollbar { width: 8px; }
-.custom-scroll::-webkit-scrollbar-track { background: transparent; }
+.custom-scroll::-webkit-scrollbar-track { background: var(--scrollbar-track); }
 .custom-scroll::-webkit-scrollbar-thumb {
-  background-color: rgba(255,255,255,0.18);
+  background-color: var(--scrollbar-thumb);
   border-radius: 9999px;
   border: 2px solid transparent;
   background-clip: content-box;
 }
 .custom-scroll:hover::-webkit-scrollbar-thumb {
-  background-color: rgba(255,255,255,0.28);
+  background-color: var(--scrollbar-thumb-hover);
 }
 .custom-scroll {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,0.22) transparent;
+  scrollbar-color: var(--scrollbar-pair);
 }
 
 input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type="number"] {
-  -moz-appearance: textfield;
-  appearance: textfield;
-}
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+input[type="number"] { -moz-appearance: textfield; appearance: textfield; }

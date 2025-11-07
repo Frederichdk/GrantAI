@@ -13,7 +13,7 @@ function DashboardHeader({ user }) {
 function ProfileHeader({ user }) {
   return (
     <div className="flex items-center gap-3">
-      <div className="size-20 rounded-full bg-neutral-700" />
+      <div className="size-20 rounded-full bg-search" />
       <div>
         <h1 className="text-3xl">{user.name || "Researcher"}</h1>
         <h2 className="text-text-pri/50">{user.email || "—"}</h2>

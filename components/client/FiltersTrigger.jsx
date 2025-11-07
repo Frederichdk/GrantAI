@@ -25,7 +25,7 @@ export default function FiltersTrigger() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="h-10 p-4 rounded-sm text-sm text-text-pri/70 bg-lgrey/60 border border-search flex items-center gap-2 hover:text-text-pri hover:bg-search hover:border-search"
+        className="h-10 p-4 rounded-sm text-sm text-text-pri/70 bg-lgrey/60 border border-search flex items-center gap-2 hover:text-text-pri hover:bg-search hover:border-inwhite/50"
       >
         <LuFilter size={16} /> Filter
         {count > 0 && (

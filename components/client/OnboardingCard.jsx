@@ -66,7 +66,7 @@ export default function OnboardingCard() {
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 bg-blue-700/70 hover:bg-blue-700 text-text-pri rounded-md py-2"
+                  className="flex-1 bg-blue-700/70 hover:bg-blue-700 text-white rounded-md py-2"
                 >
                   Next →
                 </button>
@@ -185,7 +185,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="flex-1 bg-blue-700/70 hover:bg-blue-700 disabled:opacity-60 text-text-pri rounded-md py-2"
+      className="flex-1 bg-blue-700/70 hover:bg-blue-700 disabled:opacity-60 text-white rounded-md py-2"
     >
       {pending ? "Saving..." : "Complete"}
     </button>

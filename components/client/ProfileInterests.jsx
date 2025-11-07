@@ -32,7 +32,7 @@ export default function ProfileInterests({ user, activeLabel }) {
             </button>
             <button
               type="submit"
-              className="px-3 py-1.5 text-sm rounded-md bg-blue-700/70 hover:bg-blue-700 text-text-pri"
+              className="px-3 py-1.5 text-sm rounded-md bg-blue-700/70 hover:bg-blue-700 text-white"
             >
               Save
             </button>
@@ -216,7 +216,7 @@ function CollaborationField({ editing, value }) {
         {!editing ? (
           <span
             className={`px-3 py-1 text-sm rounded-full ${
-              isYes ? "bg-blue-700 text-text-pri" : "bg-search/70 text-inwhite"
+              isYes ? "bg-blue-700 text-white" : "bg-search/70 text-inwhite"
             }`}
           >
             {isYes ? "Yes" : "No"}

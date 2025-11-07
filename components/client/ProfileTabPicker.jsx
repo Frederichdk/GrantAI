@@ -40,7 +40,7 @@ export default function ProfileTabPicker({ activeKey }) {
             {isActive && (
               <motion.span
                 layoutId="tabHighlight"
-                className="absolute inset-0 rounded-sm bg-search"
+                className="absolute inset-0 rounded-sm bg-inwhite/20"
                 transition={{ type: "spring", stiffness: 500, damping: 40 }}
               />
             )}

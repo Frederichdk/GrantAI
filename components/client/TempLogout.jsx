@@ -9,11 +9,9 @@ export default function Logout() {
       <button
         type="submit"
         className="p-2 rounded-md  
-                   text-inwhite 
+                   text-text-sec 
                    hover:text-text-pri 
-                   transition-all duration-150 
-                   active:scale-[0.97] shadow-sm hover:shadow-md
-                   "
+                   transition-all duration-150 "
         title="Log out"
       >
         <FiLogOut size={20} />

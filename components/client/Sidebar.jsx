@@ -55,7 +55,7 @@ export default function Sidebar() {
               className={`group grid items-center rounded-lg transition ${
                 active
                   ? "bg-lgrey text-text-pri"
-                  : "text-text-sec hover:text-white hover:bg-hover"
+                  : "text-text-sec hover:text-text-pri hover:bg-hover"
               } ${expanded ? "grid-cols-[24px_1fr]" : "grid-cols-[24px_0fr]"}
                    px-3 py-3 gap-3
                   transition-[grid-template-columns]`}
