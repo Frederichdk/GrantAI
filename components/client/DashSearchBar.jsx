@@ -47,7 +47,7 @@ export default function DashSearchBar() {
             <PiMicrophoneLight size={20} />
           </IconButton>
 
-          <IconButton type="submit">
+          <IconButton hover={false} type="submit">
             <LuSend size={18} />
           </IconButton>
         </form>
@@ -63,7 +63,7 @@ function IconButton({ children, hover = true, onClick, type = "button" }) {
       onClick={onClick}
       className={[
         "text-text-sec w-10 h-10 flex justify-center items-center rounded-xl hover:text-text-pri",
-        hover && "hover:bg-neutral-800/70",
+        hover && "hover:bg-hover",
       ]
         .filter(Boolean)
         .join(" ")}

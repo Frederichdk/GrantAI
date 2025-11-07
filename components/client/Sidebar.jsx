@@ -18,7 +18,7 @@ export default function Sidebar() {
 
   return (
     <aside
-      className={`${width} h-full border-r border-neutral-800 bg-neutral-900 transition-all`}
+      className={`${width} h-full border-r border-lgrey transition-all`}
       aria-label="Primary"
     >
       <div
@@ -36,7 +36,7 @@ export default function Sidebar() {
 
         <button
           onClick={() => setExpanded((x) => !x)}
-          className="p-3  rounded-md  hover:bg-neutral-800/70"
+          className="p-3  rounded-md  hover:bg-hover"
           title={expanded ? "Collapse" : "Expand"}
         >
           <BsLayoutSidebar size={20} />
@@ -54,8 +54,8 @@ export default function Sidebar() {
               aria-current={active ? "page" : undefined}
               className={`group grid items-center rounded-lg transition ${
                 active
-                  ? "bg-neutral-800 text-text-pri"
-                  : "text-text-sec hover:text-white hover:bg-neutral-800/70"
+                  ? "bg-lgrey text-text-pri"
+                  : "text-text-sec hover:text-text-pri hover:bg-hover"
               } ${expanded ? "grid-cols-[24px_1fr]" : "grid-cols-[24px_0fr]"}
                    px-3 py-3 gap-3
                   transition-[grid-template-columns]`}

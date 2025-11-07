@@ -30,7 +30,7 @@ export default function GrantBackButton({ fallback = "/" }) {
 
   return (
     <button
-      className="flex justify-center items-center w-10 h-10 rounded-xl text-text-sec hover:bg-neutral-700/40 hover:text-text-pri"
+      className="flex justify-center items-center w-10 h-10 rounded-xl text-text-sec hover:bg-mgrey hover:text-text-pri"
       onClick={handleBack}
       aria-label="Go back"
     >

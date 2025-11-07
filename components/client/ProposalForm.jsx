@@ -23,7 +23,7 @@ export default function ProposalForm() {
         value={query}
         onChange={handleChange}
         placeholder="Enter background information for the grant application..."
-        className="flex-1 w-full resize-none overflow-y-auto rounded-md bg-neutral-700/40 p-4 text-sm font-normal text-text-pri/80 placeholder:text-text-sec outline-none custom-scroll"
+        className="flex-1 w-full resize-none overflow-y-auto rounded-md bg-mgrey p-4 text-sm font-normal text-text-pri/80 placeholder:text-text-sec outline-none custom-scroll"
       />
       <button
         type="submit"

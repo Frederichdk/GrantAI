@@ -10,7 +10,7 @@ export default function ProfileBasicDetails({ user, activeLabel }) {
     <form action={updateProfileAction} className="flex flex-col gap-4">
       <input type="hidden" name="orcid" value={user.orcid} />
       <input type="hidden" name="tab" value="basic" />
-      <div className="flex w-full justify-between items-center px-6 pb-4 border-b-2 border-neutral-800/70  h-14">
+      <div className="flex w-full justify-between items-center px-6 pb-4 border-b-2 border-lgrey/70  h-14">
         <h2 className="text-lg text-text-pri/90 font-semibold">
           {activeLabel}
         </h2>
@@ -18,7 +18,7 @@ export default function ProfileBasicDetails({ user, activeLabel }) {
           <button
             type="button"
             onClick={() => setEditing(true)}
-            className="px-3 py-1.5 text-sm rounded-md border border-neutral-700 hover:bg-neutral-800/60"
+            className="px-3 py-1.5 text-sm rounded-md border border-search hover:bg-lgrey/80"
           >
             Edit
           </button>
@@ -27,13 +27,13 @@ export default function ProfileBasicDetails({ user, activeLabel }) {
             <button
               type="button"
               onClick={() => setEditing(false)}
-              className="px-3 py-1.5 text-sm rounded-md border border-neutral-700 hover:bg-neutral-800/60"
+              className="px-3 py-1.5 text-sm rounded-md border border-search hover:bg-lgrey/80"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-3 py-1.5 text-sm rounded-md bg-indigo-600 hover:bg-indigo-500 text-white"
+              className="px-3 py-1.5 text-sm rounded-md bg-blue-700/70 hover:bg-blue-700 text-white"
             >
               Save
             </button>
@@ -41,7 +41,7 @@ export default function ProfileBasicDetails({ user, activeLabel }) {
         )}
       </div>
       <div className="px-6 flex flex-col gap-4">
-        <div className="rounded-lg border border-neutral-800 p-6 bg-neutral-800/70">
+        <div className="rounded-lg border border-lgrey p-6 bg-lgrey/70">
           <h3 className="text-text-pri/80 font-semibold">
             Personal Information
           </h3>
@@ -67,7 +67,7 @@ export default function ProfileBasicDetails({ user, activeLabel }) {
           </div>
         </div>
 
-        <div className="rounded-lg border border-neutral-800 p-6 bg-neutral-800/70">
+        <div className="rounded-lg border border-lgrey p-6 bg-lgrey/70">
           <h3 className="text-text-pri/80 font-semibold">
             Academic Information
           </h3>
@@ -106,7 +106,7 @@ function Field({ label, name, value, editing }) {
         <input
           name={name}
           defaultValue={value || ""}
-          className="w-1/2 rounded-md border text-sm border-neutral-700 bg-neutral-900 px-3 py-2"
+          className="w-1/2 rounded-lg border text-sm border-search bg-mainbg px-3 py-2"
           data-1p-ignore="true" //Raging
         />
       ) : (

@@ -54,7 +54,7 @@ function IconButton({ children, hover = true, onClick }) {
       onClick={onClick}
       className={[
         "text-text-sec w-10 h-10 flex justify-center items-center rounded-xl hover:text-text-pri",
-        hover && "hover:bg-neutral-700/40",
+        hover && "hover:bg-mgrey",
       ]
         .filter(Boolean)
         .join(" ")}

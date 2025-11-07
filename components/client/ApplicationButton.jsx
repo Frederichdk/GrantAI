@@ -8,7 +8,7 @@ export default function ApplicationButton({ id, from }) {
     : `/grants/${id}/proposal`;
   return (
     <Link href={href}>
-      <button className="h-8 p-3 rounded-lg text-sm text-text-pri/70 bg-blue-700/70 flex items-center gap-2 hover:text-text-pri hover:bg-blue-700">
+      <button className="h-8 p-3 rounded-lg text-sm text-white/70 bg-blue-700/70 flex items-center gap-2 hover:text-white hover:bg-blue-700">
         <FaRegFileAlt size={16} /> Start Application
       </button>
     </Link>

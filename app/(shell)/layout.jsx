@@ -5,6 +5,7 @@ import Logout from "@/components/client/TempLogout";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { getUserByOrcid } from "@/lib/dal";
+import ThemeToggle from "@/components/client/Themetoggle";
 
 export default async function ShellLayout({ children }) {
   const cookieStore = await cookies();
@@ -22,16 +23,15 @@ export default async function ShellLayout({ children }) {
           <div className="mx-auto p-6 flex justify-between items-center">
             <h1 className="text-xl font-bold">Grant AI</h1>
             <div className="flex gap-2">
+              <ThemeToggle />
               <Logout />
               <Link href="/profile">
                 <button
                   className="p-2 rounded-md  
-                text-neutral-300 
-                hover:text-white 
+                text-text-sec
+                hover:text-text-pri 
                 transition-all duration-150 
-                active:scale-[0.97] shadow-sm hover:shadow-md
-                focus:outline-none focus:ring-2 focus:ring-neutral-500 
-                       focus:ring-offset-2 focus:ring-offset-neutral-900"
+                active:scale-[0.97] "
                   title="Profile"
                 >
                   <GoPerson size={20} />

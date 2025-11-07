@@ -13,10 +13,10 @@ export default async function DashboardPage() {
 
       <div className="flex-4 flex flex-col items-center pb-6 gap-2">
         <div className="w-7/10">
-          <h3 className="text-lg text-neutral-300 font-semibold pb-4 px-6 border-b-2 border-neutral-800">
+          <h3 className="text-lg text-inwhite font-semibold pb-4 px-6 border-b-2 border-lgrey">
             Grant Recommendations
           </h3>
-          <p className="py-2 px-6 border-b-2 border-neutral-800 text-text-sec">
+          <p className="py-2 px-6 border-b-2 border-lgrey text-text-sec">
             {grants.length} grants found
           </p>
         </div>

@@ -33,17 +33,17 @@ export default function FiltersDrawer({ open, onClose }) {
       <aside
         ref={panelRef}
         tabIndex={-1}
-        className={`absolute right-0 top-0 h-full w-[380px] max-w-[90vw] bg-neutral-800 border-l border-white/10 shadow-2xl transition-transform duration-200 ease-out ${
+        className={`absolute right-0 top-0 h-full w-[380px] max-w-[90vw] bg-lgrey border-l border-search shadow-2xl transition-transform duration-200 ease-out ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="h-16 px-4 flex items-center justify-between border-b border-white/10">
-          <div className="text-sm uppercase tracking-wide text-white/60">
+        <div className="h-16 px-4 flex items-center justify-between border-b border-search">
+          <div className="text-sm uppercase tracking-wide text-text-pri/60">
             Filters
           </div>
           <button
             onClick={onClose}
-            className="rounded-md px-2 py-1 text-sm text-white/70 hover:text-white"
+            className="rounded-md px-2 py-1 text-sm text-text-pri/70 hover:text-text-pri"
           >
             Close
           </button>
@@ -54,38 +54,38 @@ export default function FiltersDrawer({ open, onClose }) {
           className="h-[calc(100%-4rem)] overflow-y-auto p-4 space-y-4"
         >
           <div className="space-y-1">
-            <div className="text-xs text-white/60">Grant Amount</div>
+            <div className="text-xs text-text-pri/60">Grant Amount</div>
             <div className="grid grid-cols-2 gap-2">
               <input
                 name="amountMin"
                 type="number"
                 placeholder="Min"
                 defaultValue={get("amountMin")}
-                className="rounded-md bg-black/40 border border-white/10 px-3 py-2 text-sm outline-none placeholder:text-text-sec appearance-none"
+                className="rounded-md bg-mainbg/60 border border-search px-3 py-2 text-sm outline-none placeholder:text-text-sec appearance-none"
               />
               <input
                 name="amountMax"
                 type="number"
                 placeholder="Max"
                 defaultValue={get("amountMax")}
-                className="rounded-md bg-black/40 border border-white/10 px-3 py-2 text-sm outline-none placeholder:text-text-sec appearance-none"
+                className="rounded-md bg-mainbg/60 border border-search px-3 py-2 text-sm outline-none placeholder:text-text-sec appearance-none"
               />
             </div>
           </div>
 
           <fieldset className="space-y-2">
-            <div className="text-xs text-white/60">Opportunity Category</div>
+            <div className="text-xs text-text-pri/60">Opportunity Category</div>
             {["A", "B", "D"].map((c) => (
               <label
                 key={c}
-                className="flex items-center gap-2 text-sm text-white/80"
+                className="flex items-center gap-2 text-sm text-text-pri/80"
               >
                 <input
                   type="checkbox"
                   name="category"
                   value={c}
                   defaultChecked={has("category", c)}
-                  className="accent-white/70"
+                  className="accent-text-pri/70"
                 />
                 {c}
               </label>
@@ -93,18 +93,18 @@ export default function FiltersDrawer({ open, onClose }) {
           </fieldset>
 
           <fieldset className="space-y-2">
-            <div className="text-xs text-white/60">Funding Category</div>
+            <div className="text-xs text-text-pri/60">Funding Category</div>
             {["E", "H", "S", "T"].map((f) => (
               <label
                 key={f}
-                className="flex items-center gap-2 text-sm text-white/80"
+                className="flex items-center gap-2 text-sm text-text-pri/80"
               >
                 <input
                   type="checkbox"
                   name="funding"
                   value={f}
                   defaultChecked={has("funding", f)}
-                  className="accent-white/70"
+                  className="accent-text-pri/70"
                 />
                 {f}
               </label>
@@ -112,18 +112,18 @@ export default function FiltersDrawer({ open, onClose }) {
           </fieldset>
 
           <fieldset className="space-y-2">
-            <div className="text-xs text-white/60">Status</div>
+            <div className="text-xs text-text-pri/60">Status</div>
             {["Open", "Closed"].map((s) => (
               <label
                 key={s}
-                className="flex items-center gap-2 text-sm text-white/80"
+                className="flex items-center gap-2 text-sm text-text-pri/80"
               >
                 <input
                   type="radio"
                   name="status"
                   value={s}
                   defaultChecked={get("status") === s}
-                  className="accent-white/70"
+                  className="accent-text-pri/70"
                 />
                 {s}
               </label>
@@ -131,7 +131,7 @@ export default function FiltersDrawer({ open, onClose }) {
           </fieldset>
 
           <div className="space-y-1">
-            <div className="text-xs text-white/60">Eligibility range</div>
+            <div className="text-xs text-text-pri/60">Eligibility range</div>
             <div className="grid grid-cols-2 gap-2">
               <input
                 name="eligibilityMin"
@@ -140,7 +140,7 @@ export default function FiltersDrawer({ open, onClose }) {
                 max={25}
                 placeholder="Min"
                 defaultValue={get("eligibilityMin")}
-                className="rounded-md bg-black/40 border border-white/10 px-3 py-2 text-sm outline-none placeholder:text-text-sec"
+                className="rounded-md bg-mainbg/60 border border-search px-3 py-2 text-sm outline-none placeholder:text-text-sec"
               />
               <input
                 name="eligibilityMax"
@@ -149,21 +149,21 @@ export default function FiltersDrawer({ open, onClose }) {
                 max={25}
                 placeholder="Max"
                 defaultValue={get("eligibilityMax")}
-                className="rounded-md bg-black/40 border border-white/10 px-3 py-2 text-sm outline-none placeholder:text-text-sec"
+                className="rounded-md bg-mainbg/60 border border-search px-3 py-2 text-sm outline-none placeholder:text-text-sec"
               />
             </div>
           </div>
 
           {/* Sort TO be moved later, Just gonna leave it here for now*/}
           <div className="space-y-1">
-            <label className="text-xs text-white/60" htmlFor="sort">
+            <label className="text-xs text-text-pri/60" htmlFor="sort">
               Sort by
             </label>
             <select
               id="sort"
               name="sort"
               defaultValue={get("sort") || "relevance"}
-              className="w-full rounded-md bg-neutral-800 border border-white/10 px-3 py-2 text-sm outline-none"
+              className="w-full rounded-md bg-lgrey border border-search px-3 py-2 text-sm outline-none text-text-pri/80"
             >
               <option value="relevance">Relevance</option>
               <option value="deadline">Application deadline</option>
@@ -175,7 +175,7 @@ export default function FiltersDrawer({ open, onClose }) {
           <div className="pt-2 flex items-center justify-between">
             <a
               href="/grants/search"
-              className="text-sm underline text-white/60 hover:text-white"
+              className="text-sm underline text-text-pri/60 hover:text-text-pri"
             >
               Clear all
             </a>
@@ -183,13 +183,13 @@ export default function FiltersDrawer({ open, onClose }) {
               <button
                 type="button"
                 onClick={onClose}
-                className="rounded-md px-4 py-2 text-sm border border-white/10 hover:bg-white/5"
+                className="rounded-md px-4 py-2 text-sm border border-search hover:bg-text-sec/20"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="rounded-md bg-white/10 hover:bg-white/15 px-4 py-2 text-sm"
+                className="rounded-md bg-search hover:bg-text-sec/50 px-4 py-2 text-sm"
               >
                 Apply
               </button>
