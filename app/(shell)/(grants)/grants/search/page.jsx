@@ -20,19 +20,19 @@ export default async function SearchPage({ searchParams }) {
 
   return (
     <>
-      <div className="w-full h-16 px-6 flex flex-row justify-between items-center bg-neutral-800/70 border-b-3 border-neutral-800/70">
+      <div className="w-full h-16 px-6 flex flex-row justify-between items-center bg-hover border-b-3 border-hover">
         <div className="flex flex-row gap-8 items-center">
           <GrantBackButton />
           <h2 className="text-xl text-text-pri/80">Grant Opportunities</h2>
         </div>
       </div>
 
-      <div className="w-full flex-3 flex flex-col bg-neutral-800/70">
-        <div className="w-full h-24 px-10 flex items-center border-b-3 border-neutral-800/70">
+      <div className="w-full flex-3 flex flex-col bg-hover">
+        <div className="w-full h-24 px-10 flex items-center border-b-3 border-hover">
           <FiltersTrigger />
         </div>
 
-        <div className="h-12 flex items-center px-10 border-b-3 border-neutral-800/70">
+        <div className="h-12 flex items-center px-10 border-b-3 border-hover">
           <p className="text-sm text-text-sec">
             Showing {grants.length} grants
           </p>

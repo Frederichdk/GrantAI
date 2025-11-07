@@ -28,9 +28,9 @@ export default function CollaboratorsList({ collaborators = [] }) {
                 "group flex items-start gap-6 rounded-2xl p-4",
                 "border transition shadow-sm",
                 active
-                  ? "border-white/25 bg-neutral-800/60"
-                  : "border-neutral-800 bg-neutral-900/30 hover:bg-neutral-900/50 hover:border-neutral-700",
-                "focus:outline-none focus:ring-2 focus:ring-white/10",
+                  ? "border-search bg-lgrey/70"
+                  : "border-lgrey bg-mainbg/30 hover:bg-mainbg/50 hover:border-search",
+                "focus:outline-none focus:ring-2 focus:ring-search/10",
               ].join(" ")}
             >
               <input
@@ -42,7 +42,7 @@ export default function CollaboratorsList({ collaborators = [] }) {
 
               <div className="flex-1">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-neutral-800 flex items-center justify-center ring-1 ring-neutral-700/60">
+                  <div className="w-8 h-8 rounded-full bg-lgrey flex items-center justify-center ring-1 ring-mgrey">
                     <LuUser className="text-text-sec" size={16} />
                   </div>
                   <div className="flex flex-col">
@@ -62,7 +62,7 @@ export default function CollaboratorsList({ collaborators = [] }) {
                     {c.tags.map((tag, i) => (
                       <span
                         key={i}
-                        className="text-[11px] px-2 py-1 rounded-md border border-neutral-800 bg-neutral-800/40 text-text-sec whitespace-nowrap"
+                        className="text-[11px] px-2 py-1 rounded-md border border-lgrey bg-lgrey/40 text-text-sec whitespace-nowrap"
                       >
                         {tag}
                       </span>

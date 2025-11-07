@@ -30,7 +30,7 @@ export default async function ProfileManagmentPage({ searchParams }) {
 
   return (
     <div className="flex flex-col w-full h-full">
-      <div className="p-6 border-t-2  border-neutral-800">
+      <div className="p-6 border-t-2  border-lgrey">
         <ProfileTabPicker activeKey={activeKey} />
       </div>
 

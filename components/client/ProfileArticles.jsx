@@ -8,7 +8,7 @@ export default function ProfileArticles({ user, activeLabel }) {
       </div>
       <div className="flex flex-col gap-4 px-6">
         <div className="rounded-lg border border-neutral-800 p-6 bg-neutral-800/70">
-          <h3 className="text-text-pri font-semibold">Paper Titles</h3>
+          <h3 className="text-text-pri/80 font-semibold">Paper Titles</h3>
           <div className="grid grid-cols-2 gap-y-4 text-sm pt-6">
             <div>
               <p className="text-text-sec">No paper titles found</p>
@@ -16,7 +16,7 @@ export default function ProfileArticles({ user, activeLabel }) {
           </div>
         </div>
         <div className="rounded-lg border border-neutral-800 p-6 bg-neutral-800/70">
-          <h3 className="text-text-pri font-semibold">Paper Abstracts</h3>
+          <h3 className="text-text-pri/80 font-semibold">Paper Abstracts</h3>
           <div className="grid grid-cols-2 gap-y-4 text-sm pt-6">
             <div>
               <p className="text-text-sec">No paper abstracts found</p>

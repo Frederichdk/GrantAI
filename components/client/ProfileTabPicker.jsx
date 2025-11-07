@@ -20,10 +20,7 @@ export default function ProfileTabPicker({ activeKey }) {
   }
 
   return (
-    <div
-      role="tablist"
-      className="flex gap-2 rounded-md border border-neutral-800 bg-black-fore p-1"
-    >
+    <div role="tablist" className="flex gap-2 rounded-md  bg-lgrey p-1">
       {TABS.map(({ key, label }) => {
         const isActive = key === activeKey;
         return (
@@ -36,8 +33,8 @@ export default function ProfileTabPicker({ activeKey }) {
             className={`relative px-4 py-2 rounded-sm text-sm transition flex-1
               ${
                 isActive
-                  ? "text-white"
-                  : "text-neutral-300 hover:bg-neutral-700/40 hover:text-white"
+                  ? "text-text-pri"
+                  : "text-inwhite hover:bg-mgrey hover:text-text-pri"
               }`}
           >
             {isActive && (

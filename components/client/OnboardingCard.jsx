@@ -29,14 +29,14 @@ export default function OnboardingCard() {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-900 text-white flex items-center justify-center">
-      <div className="bg-neutral-800 border border-neutral-700 rounded-xl p-6 w-full max-w-2xl shadow-lg">
+    <div className="min-h-screen bg-mainbg text-text-pri flex items-center justify-center">
+      <div className="bg-lgrey border border-search rounded-xl p-6 w-full max-w-2xl shadow-lg">
         {effectiveStep === 1 ? (
           <>
             <h2 className="text-lg font-semibold mb-1 text-center">
               Update Your User Profile
             </h2>
-            <p className="text-sm text-neutral-400 mb-4 text-center">
+            <p className="text-sm text-text-sec mb-4 text-center">
               Automatically sync your profile research data.
             </p>
 
@@ -52,7 +52,7 @@ export default function OnboardingCard() {
                   onChange={handleOrcidChange}
                   inputMode="numeric"
                   placeholder="0000-0000-0000-0000"
-                  className="w-full rounded-md border border-neutral-700 bg-neutral-900 px-3 py-2 outline-none focus:border-neutral-500 placeholder-neutral-400"
+                  className="w-full rounded-md border border-search bg-mainbg px-3 py-2 outline-none focus:border-text-sec placeholder-text-sec"
                 />
               </div>
 
@@ -60,13 +60,13 @@ export default function OnboardingCard() {
                 <button
                   type="button"
                   onClick={handleSkip}
-                  className="flex-1 border border-neutral-600 text-neutral-200 rounded-md py-2 hover:bg-neutral-700/40"
+                  className="flex-1 border border-search text-inwhite rounded-md py-2 hover:bg-mgrey hover:text-text-pri"
                 >
                   Skip
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white rounded-md py-2"
+                  className="flex-1 bg-blue-700/70 hover:bg-blue-700 text-text-pri rounded-md py-2"
                 >
                   Next →
                 </button>
@@ -78,7 +78,7 @@ export default function OnboardingCard() {
             <h2 className="text-lg font-semibold mb-2 text-center">
               Complete Your User Profile
             </h2>
-            <p className="text-sm text-neutral-400 mb-5 text-center">
+            <p className="text-sm text-text-sec mb-5 text-center">
               Update your profile to help improve grant recommendations.
             </p>
 
@@ -145,7 +145,7 @@ export default function OnboardingCard() {
                 <button
                   type="button"
                   onClick={handleSkip}
-                  className="flex-1 border border-neutral-600 text-neutral-200 rounded-md py-2 hover:bg-neutral-700/40"
+                  className="flex-1 border border-neutral-600 text-inwhite rounded-md py-2 hover:bg-mgrey hover:text-text-pri"
                 >
                   Skip
                 </button>
@@ -173,7 +173,7 @@ function Field({
         name={name}
         defaultValue={defaultValue}
         placeholder={placeholder}
-        className="w-full rounded-md border border-neutral-700 bg-neutral-900 px-3 py-2 placeholder-neutral-400"
+        className="w-full rounded-md border border-search bg-mainbg px-3 py-2 placeholder-text-sec"
       />
     </div>
   );
@@ -185,7 +185,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="flex-1 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-60 text-white rounded-md py-2"
+      className="flex-1 bg-blue-700/70 hover:bg-blue-700 disabled:opacity-60 text-text-pri rounded-md py-2"
     >
       {pending ? "Saving..." : "Complete"}
     </button>

@@ -6,9 +6,13 @@
 }
 
 @theme{
-  --color-black-back: #171717;
+  --color-mainbg: #171717;
   --color-black-fore: #262626;
   --color-block: #35353b;
+  --color-inwhite: #d4d4d4;
+  --color-mgrey: #313131;
+  --color-lgrey: #262626;
+  --color-hover: #222222;
   --color-search: #404040;
   --color-text-pri: #fbfbfb;
   --color-text-sec: #9c9c9c;
@@ -45,4 +49,5 @@ input[type="number"]::-webkit-inner-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }

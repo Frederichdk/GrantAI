@@ -47,16 +47,16 @@ export default function GrantRecomendations({ grants }) {
               pathname: `/grants/${encodeURIComponent(g.id)}`,
               query: { from: currentUrl },
             }}
-            className="group block rounded-lg border border-neutral-800 bg-neutral-800/70 px-5 py-4
-                       hover:border-neutral-700 hover:bg-neutral-800/80 transition-colors outline-none
-                       focus-visible:ring-2 focus-visible:ring-neutral-500"
+            className="group block rounded-lg border border-lgrey bg-hover px-5 py-4
+                       hover:border-search hover:bg-lgrey/80 transition-colors outline-none
+                       focus-visible:ring-2 focus-visible:ring-search/60"
           >
             <div className="flex items-start justify-between gap-3">
-              <h4 className="text-base font-semibold text-blue-300 group-hover:text-blue-200">
+              <h4 className="text-base font-semibold text-blue-400 group-hover:text-blue-300">
                 {g.title}
               </h4>
               {typeof g.score === "number" && (
-                <span className="shrink-0 rounded-md bg-neutral-900/80 px-2 py-1 text-xs text-neutral-300 border border-neutral-700">
+                <span className="shrink-0 rounded-md bg-mainbg/80 px-2 py-1 text-xs text-inwhite border border-search">
                   Score {fmtScore(g.score)}
                 </span>
               )}
@@ -66,7 +66,7 @@ export default function GrantRecomendations({ grants }) {
               {g.description}
             </p>
 
-            <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-neutral-400">
+            <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-text-sec">
               <span>{g.provider || "—"}</span>
               <Dot />
               <span>{fmtMoney(g.amount)}</span>
@@ -74,7 +74,7 @@ export default function GrantRecomendations({ grants }) {
               <span>Opened: {fmtDate(g.posted_date || g.release_date)}</span>
               <Dot />
               <span>Due: {fmtDate(g.deadline)}</span>
-              <span className="ml-auto inline-flex items-center text-neutral-500 group-hover:text-neutral-300">
+              <span className="ml-auto inline-flex items-center text-search/60 group-hover:text-inwhite">
                 <HiChevronRight aria-hidden="true" />
               </span>
             </div>
@@ -86,5 +86,5 @@ export default function GrantRecomendations({ grants }) {
 }
 
 function Dot() {
-  return <span className="mx-1 text-neutral-600">•</span>;
+  return <span className="mx-1 text-search/80">•</span>;
 }

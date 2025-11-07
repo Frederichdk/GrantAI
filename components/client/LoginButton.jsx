@@ -17,7 +17,7 @@ export default function LoginButton() {
   return (
     <button
       onClick={handleLogin}
-      className="w-full bg-neutral-700 hover:bg-neutral-600 text-white py-2 rounded transition-all duration-150"
+      className="w-full bg-search hover:bg-inwhite/80 text-text-pri py-2 rounded transition-all duration-150"
     >
       Login with SSO
     </button>

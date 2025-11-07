@@ -10,7 +10,7 @@ export default async function GrantDetailsPage({ params }) {
 
   return (
     <>
-      <div className="w-full h-16 px-6 flex flex-row justify-between items-center bg-neutral-800/70 border-b-3 border-neutral-800">
+      <div className="w-full h-16 px-6 flex flex-row justify-between items-center bg-hover border-b-3 border-lgrey">
         <div className="flex flex-row gap-8 items-center">
           <GrantBackButton />
           <h2 className="text-xl text-text-pri/80">{grant.title}</h2>
@@ -18,7 +18,7 @@ export default async function GrantDetailsPage({ params }) {
         <ApplicationButton id={id} from={`/grants/${id}`} />
       </div>
 
-      <div className="w-full flex-1 px-10 py-4 text-sm bg-neutral-800/70 grid grid-cols-2 items-center border-b-2 border-neutral-800">
+      <div className="w-full flex-1 px-10 py-4 text-sm bg-hover grid grid-cols-2 items-center border-b-2 border-lgrey">
         <div className="h-fit">
           <p className="text-text-pri/80">Provider</p>
           <p className="text-text-sec">{grant?.provider || "Unknown"}</p>
@@ -54,7 +54,7 @@ export default async function GrantDetailsPage({ params }) {
           </p>
         </div>
       </div>
-      <div className="w-full flex-4 p-6 bg-neutral-800/70">
+      <div className="w-full flex-4 p-6 bg-hover">
         <div className="w-full h-[58vh] overflow-y-auto custom-scroll">
           <div className="w-full h-fit pb-6">
             <h3 className="text-text-pri/80 mb-2">Description</h3>
@@ -62,7 +62,7 @@ export default async function GrantDetailsPage({ params }) {
           </div>
           {grant?.eligibility && (
             <>
-              <div className="border-t-2 border-neutral-800 py-4">
+              <div className="border-t-2 border-lgrey py-4">
                 <h3 className="text-text-pri/80 mb-2">Eligibility</h3>
                 <p className="text-text-sec">{grant.eligibility}</p>
               </div>
