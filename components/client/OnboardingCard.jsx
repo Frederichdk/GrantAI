@@ -173,6 +173,7 @@ function Field({
         name={name}
         defaultValue={defaultValue}
         placeholder={placeholder}
+        data-1p-ignore="true"
         className="w-full rounded-md border border-search bg-mainbg px-3 py-2 placeholder-text-sec"
       />
     </div>
